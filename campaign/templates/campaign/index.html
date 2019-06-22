@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+	<meta charset="utf-8">
+	<title>AB Reports</title>
+
+	<!-- mobile responsive meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<!-- ** Plugins Needed for the Project ** -->
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="/static/plugins/bootstrap/bootstrap.min.css">
+	<link rel="stylesheet" href="/static/plugins/themify/css/themify-icons.css">
+	<link rel="stylesheet" href="/static/plugins/animated-text/animated-text.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+
+	<!-- Main Stylesheet -->
+	<link href="/static/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+	<!-- Banner Start -->
+	<section class="banner">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-10">
+					<h2 class="cd-headline clip is-full-width">
+						AB Reports <br>
+						<!-- <span class="cd-words-wrapper text-color">
+							<b class="is-visible">Design solutions. </b>
+							<b>Creative Ideas.</b>
+							<b>Professional Content.</b>
+						</span> -->
+					</h2>
+					<p>Semua upload Photo Akan di Tampilkan Di Sini </p>
+				</div>
+			</div>
+			<hr>
+		</div>
+	</section>
+
+	<!-- Banner End -->
+
+	<!-- POrtfolio start -->
+	<section class="portfolio ">
+		<div class="container">
+			<div class="row">
+				<div class="col-10">
+					<div class="btn-group btn-group-toggle " data-toggle="buttons">
+						<label class="btn active ">
+							<input type="radio" name="shuffle-filter" value="all" checked="checked" />All Projects
+						</label>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				{% for campaign in campaigns %}
+				<div class="col-lg-2 col-md-4 col-sm-3 col-xs-6">
+					<div class="campaign_icon_box ">
+					<a href="{{campaign.get_url}}"><img
+							src="{{campaign.get_photo_url}}" class="w-100 d-block"></a>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+	</section>
+	<!-- Portfolio End -->
+
+	<!-- jQuery -->
+	<script src="/static/plugins/jQuery/jquery.min.js"></script>
+	<!-- Bootstrap JS -->
+	<script src="/static/plugins/bootstrap/bootstrap.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+	<script src="/static/plugins/animated-text/animated-text.js"></script>
+	<!-- Main Script -->
+	<script src="/static/js/script.js"></script>
+	<script>
+		$('[data-fancybox="gallery"]').fancybox({
+			buttons: [
+				'slideShow',
+				'share',
+				'zoom',
+				'fullScreen',
+				'close',
+				'download'
+			]
+		});
+	</script>
+
+</html>
