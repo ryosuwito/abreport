@@ -25,7 +25,7 @@ SECRET_KEY = 'k-@7b69cyd+fbj-n6@@qe@(qv#53-8ht8i!o*@@igt^@ny3f6k'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["abreport.abplusscar.com"]
 
 
 # Application definition
