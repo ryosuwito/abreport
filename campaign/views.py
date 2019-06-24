@@ -70,7 +70,7 @@ def photo_by_driver(request, campaign_name, license_no, *args, **kwargs):
 	else:
 		data = []
 	for cd in campaign_data:
-		data.append("%s%s%s"%(request.scheme,request.get_host(),cd.get_photo_url()))
+		data.append("%s://%s%s"%(request.scheme,request.get_host(),cd.get_photo_url()))
 	return JsonResponse({"status":"OK",
 		"data":data})
 
