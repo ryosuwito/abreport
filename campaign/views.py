@@ -65,14 +65,14 @@ def photo_by_campaign(request, campaign_name, *args, **kwargs):
 def photo_by_driver(request, campaign_name, license_no, *args, **kwargs):
 	campaign_data = CampaignData.objects.filter(campaign__name=campaign_name.replace(" ","").lower(),
 		license_no=license_no.replace(" ","").lower())
-    if not campaign_data:
-	    return JsonResponse({"status":"file empty"})
+	if not campaign_data:
+		return JsonResponse({"status":"file empty"})
 	else:
 		data = []
-		for cd in campaign_data:
-			data.append(cd.get_photo_url)
-		return JsonResponse({"status":"OK",
-			"data":data})
+	for cd in campaign_data:
+		data.append(cd.get_photo_url)
+	return JsonResponse({"status":"OK",
+		"data":data})
 
 def index(request, *args, **kwargs):
 	campaigns = Campaign.objects.all()
