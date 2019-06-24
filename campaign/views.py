@@ -62,6 +62,7 @@ def photo_by_campaign(request, campaign_name, *args, **kwargs):
 		{"campaign_data":campaign_data,
 		"campaign_name":campaign_name})
 
+@csrf_exempt
 def photo_by_driver(request, campaign_name, license_no, *args, **kwargs):
 	campaign_data = CampaignData.objects.filter(campaign__name=campaign_name.replace(" ","").lower(),
 		license_no=license_no.replace(" ","").lower())
