@@ -9,5 +9,6 @@ urlpatterns = [
     path('buktitayang/<str:campaign_name>/', views.upload_bukti_tayang),
     path('detail/<str:campaign_name>/', views.photo_by_campaign),
     path('download/<str:campaign_name>/', views.download_image),
+    path('bukti/<str:campaign_name>/<str:license_no>/', views.photo_by_driver),
     re_path(r'^$', views.index, name='campaign_all'),
 ]

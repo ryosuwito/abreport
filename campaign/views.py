@@ -63,8 +63,8 @@ def photo_by_campaign(request, campaign_name, *args, **kwargs):
 		"campaign_name":campaign_name})
 
 def photo_by_driver(request, campaign_name, license_no, *args, **kwargs):
-	campaign_data = CampaignData.objects.filter(campaign__name=campaign_name,
-		license_no=license_no)
+	campaign_data = CampaignData.objects.filter(campaign__name=campaign_name.replace(" ","").lower(),
+		license_no=license_no.replace(" ","").lower())
     if not campaign_data:
 	    return JsonResponse({"status":"file empty"})
 	else:
