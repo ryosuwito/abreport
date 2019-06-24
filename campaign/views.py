@@ -12,17 +12,22 @@ from datetime import datetime
 @csrf_exempt
 def upload_bukti_tayang(request, campaign_name, *args, **kwargs):
     files = request.FILES.getlist('photos') #'file_field' --> 'imagen' for you
-    if not request.user.is_authenticated:
-    	user = User.objects.get(username="project")
-    else:
-    	user = request.user
+    license_no = ""
     if request.method == "POST":
+        if request.POST.get("license_no"):
+            user = User.objects.get(username="driver")
+            license_no = request.POST.get("license_no").replace(" ","").lower()
+        if not request.user.is_authenticated:
+            user = User.objects.get(username="project")
+        else:
+            user = request.user
+    
         try:
             campaign = Campaign.objects.get(name=campaign_name.lower())
         except:
             return JsonResponse({"status":"Upload Failed"})    	
         for file in files:
-            bukti_tayang = CampaignData.objects.create(campaign=campaign, photo=file, uploader=user)
+            bukti_tayang = CampaignData.objects.create(campaign=campaign, photo=file, uploader=user, license_no=license_no)
         if files:
             return HttpResponseRedirect("/campaign/detail/%s/"%campaign_name)
         else:

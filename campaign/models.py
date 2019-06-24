@@ -48,6 +48,11 @@ class CampaignData(models.Model):
             null=True,
             related_name="photos_by_user",)
 
+    license_no = models.CharField(db_index=True,
+    	    default="",
+            max_length = 100,
+            help_text="No Plat Driver")
+
     def get_photo_url(self):
         return "/media/%s" % (self.photo)
 
