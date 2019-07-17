@@ -63,6 +63,8 @@ def photo_by_campaign(request, campaign_name, *args, **kwargs):
     if return_format == "json":
         data = []
         for count, license in enumerate(licenses):
+            if license['license_no'] == "":
+                continue
             campaign_data = CampaignData.objects.filter(campaign__name=campaign_name, license_no=license['license_no'])
             temp_data = []
             for cdata in campaign_data:
