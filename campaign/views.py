@@ -80,6 +80,7 @@ def photo_by_campaign(request, campaign_name, *args, **kwargs):
                     "foto4":temp_data[3]
                 })
         return JsonResponse({"data":data})
+    campaign_data = CampaignData.objects.filter(campaign__name=campaign_name)
     return render(request, "campaign/detail.html",
        {"campaign_data":campaign_data,
         "campaign_name":campaign_name})
