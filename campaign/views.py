@@ -70,7 +70,7 @@ def photo_by_campaign(request, campaign_name, *args, **kwargs):
             if len(temp_data)<4:
                 diff = 4-len(temp_data)
                 for idx in range(1, diff+1):
-                    temp_data.appen("")
+                    temp_data.append("")
             data.append({
                     "id":count+1,
                     "nomor_plat":license['license_no'],
