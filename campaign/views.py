@@ -57,7 +57,29 @@ def download_image(request, campaign_name, *args, **kwargs):
     return response
 
 def photo_by_campaign(request, campaign_name, *args, **kwargs):
-	campaign_data = CampaignData.objects.filter(campaign__name=campaign_name)
+    return_format = request.GET.get("format", "")
+    licenses = CampaignData.objects.filter(campaign__name=campaign_name).values("license_no").distinct()
+    data_count = 1
+    if return_format == "json":
+        data = []
+        for count, license in enumerate(licenses):
+            campaign_data = CampaignData.objects.filter(campaign__name=campaign_name, license_no=license['license_no'])
+            temp_data = []
+            for cdata in campaign_data:
+                temp_data.append(cdata.get_photo_url())
+            if len(temp_data<4):
+                diff = 4-len(temp_data)
+                for idx in range(1, diff+1):
+                    temp_data.appen("")
+            data.append({
+                    "id":count+1,
+                    "nomor_plat":license['license_no'],
+                    "foto":temp_data[0],
+                    "foto2":temp_data[1],
+                    "foto3":temp_data[2],
+                    "foto4":temp_data[3]
+                })
+        return JsonResponse({"data":data})
 	return render(request, "campaign/detail.html",
 		{"campaign_data":campaign_data,
 		"campaign_name":campaign_name})
