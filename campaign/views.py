@@ -80,9 +80,9 @@ def photo_by_campaign(request, campaign_name, *args, **kwargs):
                     "foto4":temp_data[3]
                 })
         return JsonResponse({"data":data})
-	return render(request, "campaign/detail.html",
-		{"campaign_data":campaign_data,
-		"campaign_name":campaign_name})
+    return render(request, "campaign/detail.html",
+       {"campaign_data":campaign_data,
+        "campaign_name":campaign_name})
 
 @csrf_exempt
 def photo_by_driver(request, campaign_name, license_no, *args, **kwargs):
