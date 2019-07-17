@@ -67,7 +67,7 @@ def photo_by_campaign(request, campaign_name, *args, **kwargs):
             temp_data = []
             for cdata in campaign_data:
                 temp_data.append(cdata.get_photo_url())
-            if len(temp_data<4):
+            if len(temp_data)<4:
                 diff = 4-len(temp_data)
                 for idx in range(1, diff+1):
                     temp_data.appen("")
