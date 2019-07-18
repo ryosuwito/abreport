@@ -48,6 +48,9 @@ class CampaignData(models.Model):
             null=True,
             related_name="photos_by_user",)
 
+    is_approved = models.BooleanField(default = False,
+            help_text="Centang untuk Menampilkan Data") 
+
     license_no = models.CharField(db_index=True,
     	    default="",
             max_length = 100,
