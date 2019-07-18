@@ -65,7 +65,9 @@ def photo_by_campaign(request, campaign_name, *args, **kwargs):
         for count, license in enumerate(licenses):
             if license['license_no'] == "":
                 continue
-            campaign_data = CampaignData.objects.filter(campaign__name=campaign_name, license_no=license['license_no'])
+            campaign_data = CampaignData.objects.filter(campaign__name=campaign_name,
+                is_approved = True, 
+                license_no=license['license_no'])
             temp_data = []
             for cdata in campaign_data:
                 temp_data.append(cdata.get_photo_url())
